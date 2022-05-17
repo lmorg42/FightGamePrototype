@@ -73,7 +73,6 @@ class Character
 
             lifebar.damage(sprite_value(sprite_bmp,"life"));
             sprite_set_value(sprite_bmp,"life", 0);
-            lifebar.draw();
             draw_round_win();
         };
 
@@ -142,6 +141,11 @@ class Character
                 draw_bitmap("coin",320,45,option_to_screen());
             else if(!player1 && round_win >= 1)
                 draw_bitmap("coin",425,45,option_to_screen());
+        };
+
+        void draw_lifebar()
+        {
+            this->lifebar.draw();
         };
 };
 

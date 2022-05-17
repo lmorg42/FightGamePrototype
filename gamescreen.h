@@ -63,6 +63,8 @@ class GameScreen
             background.draw_background();
             player1.sprite_update();
             player2.sprite_update();
+            player1.draw_lifebar();
+            player2.draw_lifebar();
             round_timer.stop_time();
             round_timer.update();
             pre_game_show_text();
@@ -123,6 +125,8 @@ class GameScreen
             sprite_face_direction();
             player1.sprite_update();
             player2.sprite_update();
+            player1.draw_lifebar();
+            player2.draw_lifebar();
 
             //Update camera
             update_camera_position(player1.get_sprite(), player2.get_sprite());
@@ -173,6 +177,8 @@ class GameScreen
             background.draw_background();
             player1.game_over_update();
             player2.game_over_update();
+            player1.draw_lifebar();
+            player2.draw_lifebar();
             round_timer.update();
             draw_end_text();
             process_events();
