@@ -1,8 +1,6 @@
 #include "splashkit.h"
 #include "lifebar.h"
 #include "playerinput.h"
-#include <iostream>
-using namespace std;
 
 class Character
 {
@@ -25,7 +23,7 @@ class Character
             if(has_resource_bundle(bundlename))
             {
                 free_resource_bundle(bundlename);
-                cout << "Character Resources Free: " << bundlename << endl; 
+                write_line("Character Resources Free: " + bundlename); 
             }
         };
 
@@ -147,6 +145,11 @@ class Character
         {
             this->lifebar.draw();
         };
+
+        void reset_round_win()
+        {
+            this->round_win = 0;
+        }
 };
 
 class Ryu : public Character
@@ -161,7 +164,7 @@ class Ryu : public Character
             if(!has_resource_bundle(bundlename))
             {
                 load_resource_bundle(bundlename, "fighter_ryu.txt");
-                cout << "Character Loaded: " << bundlename << endl; 
+                write_line("Character Loaded: " + bundlename); 
             }
 
             this->name = "Ryu";

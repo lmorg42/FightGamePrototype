@@ -24,20 +24,21 @@ class GameScreen
         Character player2;
 
     public:
+        GameScreen(){};
         GameScreen(Character player1, Character player2, Background background)
         {
             this->game_over = game_screen_init();
-            cout << "Game Screen Resources Loaded" << endl; 
+            write_line("Game Screen Resources Loaded"); 
             this->player1 = player1;
             this->player2 = player2;
             this->background = background;
         };
         ~GameScreen()
         {
-            cout << "Game Screen Resources freed" << endl; 
+            write_line("Game Screen Resources freed"); 
         };
 
-        void update()
+        bool update()
         {
             if(pre_game)
             {
@@ -55,6 +56,8 @@ class GameScreen
             {
                 victory_routine();
             }
+
+            return false;
         };
 
         void pre_game_loop()
@@ -309,5 +312,32 @@ class GameScreen
             }
 
             return game_over;
+        };
+
+        bool get_victory()
+        {
+            return this->victory;
+        };
+
+        void set_victory(bool value)
+        {
+            this->victory = value;
+        };
+
+        void full_reset()
+        {
+            round_alpha = 0.1;
+            fight_alpha = 0.1;
+            fade_alpha = 1.0;
+            pre_game = true;
+            round = 1;
+            game_over = game_screen_init();
+            player1.reset();
+            player2.reset();
+            round_timer.reset();
+            round_over_timer = 0;
+            victory = false;
+            player1.reset_round_win();
+            player2.reset_round_win();
         }
 };

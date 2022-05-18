@@ -1,3 +1,4 @@
 BITMAP,coin,coin.png
 ANIM,RyuTest,fighter.txt
 FONT,normalFont,EarthrealmRegular.ttf
+FONT,3dFont,EarthrealmAcademy.ttf
