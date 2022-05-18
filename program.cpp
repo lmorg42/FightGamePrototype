@@ -1,6 +1,7 @@
 #include "splashkit.h"
 #include "menu.h"
 #include "gamescreen.h"
+#include "splashscreen.h"
 
 Character character_selection(bool facing_left, double start_x, double start_y, bool player1, bool human_player, string name)
 {
@@ -27,22 +28,31 @@ int main()
     set_camera_y(200);
     open_window("Test", 768, 488);
 
+    Splashscreen splash_screen;
     GameScreen game_screen;
     Character player1;
     Character player2;
     Background background;
     Menu menu_screen;
     
+    bool splashscreen = true;
     bool quit = false;
-    bool menu = true;
+    bool menu = false;
     bool game = false;
+
     bool load_game = true;
     bool victory = false;
 
-
     while(!key_typed(ESCAPE_KEY))
     {
-        if(menu)
+        if(splashscreen)
+        {
+            splash_screen.update();
+            splashscreen = splash_screen.get_playing();
+            if(!splashscreen)
+                menu = true;
+        }
+        else if(menu)
         {
             if(!has_timer("menu_time"))
             {
@@ -83,6 +93,9 @@ int main()
             break;
             //exit(0);
         }
+
+        process_events();
+        refresh_screen(60);
     }
 
     return 0;

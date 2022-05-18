@@ -25,7 +25,7 @@ class Menu
         void update()
         {
             clear_screen(COLOR_BLACK);
-            draw_text("Menu Screen", COLOR_WHITE, "3dFont", 65, 200, 30, option_to_screen());
+            draw_text("Menu Screen", COLOR_WHITE, "fancyFont", 65, 200, 30, option_to_screen());
             draw_text("VS Player", COLOR_WHITE, "normalFont", 58, 10, 250, option_to_screen());
             draw_text("VS Computer", COLOR_WHITE, "normalFont", 58, 10, 300, option_to_screen());
             draw_text("Credits", COLOR_WHITE, "normalFont", 58, 10, 350, option_to_screen());
@@ -33,8 +33,6 @@ class Menu
             input();
             selection();
             make_selection(select);
-            process_events();
-            refresh_screen(60);
         };
 
         void flashing_text(string text, int y_pos)

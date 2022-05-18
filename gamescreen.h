@@ -38,26 +38,14 @@ class GameScreen
             write_line("Game Screen Resources freed"); 
         };
 
-        bool update()
+        void update()
         {
             if(pre_game)
-            {
                 pre_game_loop();
-            }
             else if(!game_over)
-            {
                 game_loop();
-            }
             else if (game_over == true && !victory)
-            {
                 round_end_loop();
-            }
-            else if(victory)
-            {
-                victory_routine();
-            }
-
-            return false;
         };
 
         void pre_game_loop()
@@ -71,8 +59,6 @@ class GameScreen
             round_timer.stop_time();
             round_timer.update();
             pre_game_show_text();
-            process_events();
-            refresh_screen(60);
         };
 
         void pre_game_show_text()
@@ -136,9 +122,6 @@ class GameScreen
 
             //Update timer
             round_timer.update();
-
-            process_events();
-            refresh_screen(60);
         }
 
         void game_over_test()
@@ -184,8 +167,6 @@ class GameScreen
             player2.draw_lifebar();
             round_timer.update();
             draw_end_text();
-            process_events();
-            refresh_screen(60);
 
             //Reset Round
             if(round_over_timer > 5)
@@ -213,15 +194,6 @@ class GameScreen
                 pre_game = false;
                 game_over = true;
             }
-        };
-
-        void victory_routine()
-        {
-            //Change to victory screen
-            clear_screen(COLOR_BLACK);
-            draw_text("Victory Screen", COLOR_WHITE, "normalFont", 65, 150, 130, option_to_screen());
-            process_events();
-            refresh_screen(60);
         };
 
         void draw_end_text()
