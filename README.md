@@ -1,6 +1,6 @@
 # Fight Game Prototype
 ## Introduction
-This is an open source game built for Thoth-Tech as part of the Applications team.
+This is an open source game built for Thoth-Tech as part of the Applications team. All images/sprites/backgrounds are placeholder images.
 
 ## How to Install
 - Install [Splashkit](https://www.splashkit.io) to your computer 
