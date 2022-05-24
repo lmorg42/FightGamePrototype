@@ -23,7 +23,7 @@ class Character
             if(has_resource_bundle(bundlename))
             {
                 free_resource_bundle(bundlename);
-                write_line("Character Resources Free: " + bundlename); 
+                //write_line("Character Resources Free: " + bundlename); 
             }
         };
 
@@ -164,7 +164,7 @@ class Ryu : public Character
             if(!has_resource_bundle(bundlename))
             {
                 load_resource_bundle(bundlename, "fighter_ryu.txt");
-                write_line("Character Loaded: " + bundlename); 
+                //write_line("Character Loaded: " + bundlename); 
             }
 
             this->name = "Ryu";

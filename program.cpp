@@ -27,6 +27,7 @@ int main()
     set_camera_x(630);
     set_camera_y(200);
     open_window("Test", 768, 488);
+    window_toggle_border("Test");
 
     Splashscreen splash_screen;
     GameScreen game_screen;

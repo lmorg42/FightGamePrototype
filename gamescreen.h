@@ -28,14 +28,14 @@ class GameScreen
         GameScreen(Character player1, Character player2, Background background)
         {
             this->game_over = game_screen_init();
-            write_line("Game Screen Resources Loaded"); 
+            //write_line("Game Screen Resources Loaded"); 
             this->player1 = player1;
             this->player2 = player2;
             this->background = background;
         };
         ~GameScreen()
         {
-            write_line("Game Screen Resources freed"); 
+            //write_line("Game Screen Resources freed"); 
         };
 
         void update()

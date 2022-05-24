@@ -14,12 +14,12 @@ class Menu
         {
             create_timer("menu_time");
             start_timer("menu_time");
-            write_line("Creating menu");
+            //write_line("Creating menu");
         };
         ~Menu()
         {
             free_timer(timer_named("menu_time"));
-            write_line("Destroying menu");
+            //write_line("Destroying menu");
         };
 
         void update()

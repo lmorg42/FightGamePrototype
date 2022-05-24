@@ -15,7 +15,7 @@ class Background
             if(has_resource_bundle(bundlename))
             {
                 free_resource_bundle(bundlename);
-                cout << "Background Resources Free: " << bundlename << endl; 
+                //cout << "Background Resources Free: " << bundlename << endl; 
             }
         };
 
@@ -44,8 +44,8 @@ class CityBackground : public Background
             if(!has_resource_bundle(bundlename))
             {
                 load_resource_bundle(bundlename, "background_city.txt");
-                cout << "Background Loaded: " << bundlename << endl; 
+                //cout << "Background Loaded: " << bundlename << endl; 
             }
-            cout << "Background Resources Loaded: " << bundlename << endl;
+            //cout << "Background Resources Loaded: " << bundlename << endl;
         };
 };
