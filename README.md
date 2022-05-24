@@ -1,8 +1,11 @@
 # Fight Game Prototype
+
 ## Introduction
+
 This is an open source game built for Thoth-Tech as part of the Applications team. All images/sprites/backgrounds are placeholder images.
 
 ## How to Install
+
 - Install [Splashkit](https://www.splashkit.io) to your computer 
 - Enter command `git clone https://github.com/lmorg42/FightGamePrototype` to your terminal
 - Go inside the created directory
@@ -14,12 +17,15 @@ OR
 - Run game or game.exe to play
 
 ## How to Play
+
 Fight against another player. First player to two wins is the champion.
 
 - Time out counts as no one winning
 
 ## Game Inputs
-### **Player 1**            
+
+### **Player 1**   
+
 | Input | Description |     
 | --- | ----------- |   
 | Up Arrow | Jump |          
@@ -30,7 +36,8 @@ Fight against another player. First player to two wins is the champion.
 | S Key | Kick |
 | D Key | Block |
 
-### **Player 2**            
+### **Player 2**  
+
 | Input | Description |     
 | --- | ----------- |   
 | U Key | Jump |          
@@ -42,11 +49,14 @@ Fight against another player. First player to two wins is the champion.
 | M Key | Block |
 
 ### **Other Inputs**
+
 | Input | Description |     
 | --- | ----------- |   
 | Esc Key | Quit The Game |          
 | Space Bar | Make Menu Selection |
 
 ## Known Issues
+
 ### Windows/MacOS
+
 - Text fading effects do not work
