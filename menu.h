@@ -1,25 +1,30 @@
 #include "splashkit.h"
 
+enum selection
+{
+    VSPLAYER,
+    VSCOMPUTER,
+    CREDITS,
+    QUIT
+};
+
 class Menu
 {
     private:
         int select = 0;
-        bool quit = false;
         font text_font;
         font text_font2;
-        bool game_start = false;
+        int menu_selection = -1;
 
     public:
         Menu()
         {
             create_timer("menu_time");
             start_timer("menu_time");
-            write_line("Creating menu");
         };
         ~Menu()
         {
             free_timer(timer_named("menu_time"));
-            write_line("Destroying menu");
         };
 
         void update()
@@ -42,7 +47,6 @@ class Menu
                 draw_text(text, COLOR_RED, "normalFont", 58, 10, y_pos, option_to_screen());
             else
                 draw_text(text, COLOR_YELLOW, "normalFont", 58, 10, y_pos, option_to_screen());
-
         };
 
         void selection()
@@ -79,26 +83,20 @@ class Menu
             {
                 switch(select)
                 {
-                    case 0: this->game_start = true;
+                    case 0: menu_selection = VSPLAYER;
                         break;
-                    case 3: this->quit = true;
+                    case 1: menu_selection = VSCOMPUTER;
+                        break;
+                    case 2: menu_selection = CREDITS;
+                        break;
+                    case 3: menu_selection = QUIT;
                         break;
                 }
             }
         };
 
-        bool get_game_start()
+        int get_selection()
         {
-            return this->game_start;
-        };
-
-        void set_game_start(bool value)
-        {
-            this->game_start = value;
-        }
-
-        bool get_quit()
-        {
-            return this->quit;
+            return this->menu_selection;
         };
 };

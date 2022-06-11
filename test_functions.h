@@ -46,20 +46,13 @@ void test_collisions(sprite sprite1, sprite sprite2)
     draw_hitboxes(rect1, rect2);
 }
 
-void double_ko(sprite sprite1, sprite sprite2)
-{
-    if(key_typed(Q_KEY))
-    {
-        sprite_set_value(sprite1,"hit",1);
-        sprite_set_dx(sprite1, 0);
-        sprite_set_value(sprite1,"life", 100);
-        sprite_start_animation(sprite1, "HitLeft1");
-        sprite_set_value(sprite2,"hit",1);
-        sprite_set_dx(sprite2, 0);
-        sprite_set_value(sprite2,"life", 100);
-        sprite_start_animation(sprite2, "HitLeft1");
-    }
-}
+// void double_ko(Fighter *fighter1, Fighter *fighter2)
+// {
+//     if(key_typed(Q_KEY))
+//     {
+//         fighter1->
+//     }
+// }
 
 void draw_screen_rectangles()
 {

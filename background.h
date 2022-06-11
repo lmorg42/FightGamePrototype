@@ -1,51 +1,86 @@
 #include "splashkit.h"
-#include <iostream>
-using namespace std;
+
+class Background;
+
+class BackgroundType
+{
+    protected:
+        Background *background;
+        string bundlename;
+    
+    public:
+        virtual ~BackgroundType()
+        {
+            write_line("Background Type Destruction");
+        };
+
+        void set_background(Background *background)
+        {
+            this->background = background;
+        };
+
+        virtual void draw_background() = 0;
+};
 
 class Background
 {
-    protected:
-        string bundlename;
-        int layers;
-    
+    private:
+        BackgroundType *background;
+        string type;
+
     public:
-        Background(){};
-        virtual ~Background()
+        Background(BackgroundType *background, string type) : background(nullptr)
         {
-            if(has_resource_bundle(bundlename))
-            {
-                free_resource_bundle(bundlename);
-                cout << "Background Resources Free: " << bundlename << endl; 
-            }
+            this->change_background(background, type);
         };
 
-        virtual void draw_background()
+        ~Background()
         {
-            if(layers == 3)
-                draw_3_layers();
+            write_line("Background Destruction: " + type);
+            delete background;
         };
 
-        virtual void draw_3_layers()
+        void change_background(BackgroundType *background, string type)
         {
-            point_2d cam = camera_position();
-            draw_bitmap("farground",(cam.x - 100) - (0.5*(cam.x)),100,option_scale_bmp(1,1));
-            draw_bitmap("background",(cam.x - 100) - (0.8*(cam.x)),0,option_scale_bmp(1,0.8));
-            draw_bitmap("foreground",(cam.x + 400) - (1.6*(cam.x)),0,option_scale_bmp(1.5,1));
+            write_line("Changing Background To: " + type);
+            if(this->background != nullptr)
+                delete this->background;
+            this->background = background;
+            this->background->set_background(this);
+        };
+
+        void draw_background()
+        {
+            this->background->draw_background();
         };
 };
 
-class CityBackground : public Background
+class CityBackground : public BackgroundType
 {
     public:
         CityBackground()
         {
-            this->layers = 3;
             this->bundlename = "citybackground";
             if(!has_resource_bundle(bundlename))
             {
                 load_resource_bundle(bundlename, "background_city.txt");
-                cout << "Background Loaded: " << bundlename << endl; 
+                write_line("Background Loaded: " + bundlename); 
             }
-            cout << "Background Resources Loaded: " << bundlename << endl;
         };
+
+        ~CityBackground()
+        {
+            free_resource_bundle(bundlename);
+            write_line("Background Resources Free: " + bundlename); 
+        };
+
+        void draw_background() override;
 };
+
+void CityBackground::draw_background()
+{
+    point_2d cam = camera_position();
+    draw_bitmap("farground",(cam.x - 100) - (0.5*(cam.x)),100,option_scale_bmp(1,1));
+    draw_bitmap("background",(cam.x - 100) - (0.8*(cam.x)),0,option_scale_bmp(1,0.8));
+    draw_bitmap("foreground",(cam.x + 400) - (1.6*(cam.x)),0,option_scale_bmp(1.5,1));
+}
